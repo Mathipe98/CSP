@@ -117,8 +117,9 @@ class CSP:
         in 'assignment' that have not yet been decided, i.e. whose list
         of legal values has a length greater than one.
         """
-        # TODO: IMPLEMENT THIS
-        pass
+        return next(variable for variable in self.variables
+                    for legalStates in assignment[variable]
+                    if len(legalStates) != 0)  # Returns first variable that has 1 or more legal states.
 
     def inference(self, assignment, queue):
         """The function 'AC-3' from the pseudocode in the textbook.
@@ -127,9 +128,21 @@ class CSP:
         is the initial queue of arcs that should be visited.
         """
         while len(queue) > 0:
-            first_arc = queue.pop(0)
-            if self.revise(assignment, first_arc[0], first_arc[1]):
-                
+            first_arc = queue.pop(0)  # This is equal to (Xi, Xj) = ('0-0', '0-1') (example)
+            Xi = first_arc[0]
+            Xj = first_arc[1]
+            if self.revise(assignment, Xi, Xj):
+                D_i = assignment[Xi]  # Domain of Xi
+                if len(D_i) == 0:  # Inconsistency if arrived here, therefore return False.
+                    return False
+                for Xk in self.get_all_neighboring_arcs(Xi):
+                    if Xk.__eq__(Xj):  # We've already dealt with Xj in self.revise, so we can skip it
+                        continue
+                    else:
+                        # We need to revise all neighbours again because having removed a value from
+                        # the domain of Xi might affect the domains of all neighbours Xk
+                        queue.append((Xk, Xi))
+        return True
 
     def revise(self, assignment, i, j):
         """The function 'Revise' from the pseudocode in the textbook.
@@ -141,10 +154,12 @@ class CSP:
         legal values in 'assignment'.
         """
         revised = False
-        listOfLegalTuples = assignment[i][j]
-        for state in assignment[i]:  # red, green, blue
-            if (state not in checkTuple[0] for checkTuple in listOfLegalTuples):  # Check if there are any legal states between i and j where i = state
-                del assignment[i]  # If no legal states, remove this state from legal states
+        D_i = assignment[i]  # [1,2,3,...]
+        D_j = assignment[j]
+        constraintTuples = self.constraints[i][j]  # [('1', '2'), ('1', '3'), ... ]
+        for x in D_i:
+            if ((x, y) not in constraintTuples for y in D_j):
+                del D_i[x]  # Delete Xi from the domain if it cannot satisfy any constraint
                 revised = True
         return revised
 
@@ -209,3 +224,10 @@ def print_sudoku_solution(solution):
         print("")
         if row == 2 or row == 5:
             print('------+-------+------')
+
+
+testCSP = create_sudoku_csp("easy.txt")
+print("All arcs: ", testCSP.get_all_arcs())
+print("Variables: ", testCSP.variables)
+print("Domains: ", testCSP.domains)
+print("Constraints: ", testCSP.constraints)
