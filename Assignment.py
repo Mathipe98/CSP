@@ -111,6 +111,22 @@ class CSP:
         # TODO: IMPLEMENT THIS
         pass
 
+    def order_domain_values(self, var, assignment):
+        """
+        Here we take in a variable (i.e. '0-0', '2-3' ... )
+        and we want to check what values that particular variable can have.
+        For instance, we can take in '0-0' and find out that the possible
+        values it is allowed to have, are: [1, 3, 5, 9]. Then we want to order
+        these values by the best value (the least-constraining one) first.
+        :param var: variable, or grid-node, for which we are investigating values
+        :param assignment: domains; shows domains of all other variables (including var)
+        :return: list of possible values for var
+        """
+        # In theory could be implemented with least-constraining variable, but will have to
+        # revise that later. For now just return the entire domain of var as-is
+        # Keep in mind: inference has been called before this function is called
+        return assignment[var]
+
     def select_unassigned_variable(self, assignment):
         """The function 'Select-Unassigned-Variable' from the pseudocode
         in the textbook. Should return the name of one of the variables

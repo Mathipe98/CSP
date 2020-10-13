@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e8443b4a-b4b3-44bb-9842-830e3698b2e5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/AI.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AI.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assignment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Assignment.py" afterDir="false" />
     </list>
@@ -68,6 +66,7 @@
       <updated>1602502278354</updated>
       <workItem from="1602502279421" duration="3632000" />
       <workItem from="1602532409159" duration="5108000" />
+      <workItem from="1602580883484" duration="4335000" />
     </task>
     <servers />
   </component>
@@ -97,6 +96,6 @@
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1602532438279" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Assignment_4$Assignment.coverage" NAME="Assignment Coverage Results" MODIFIED="1602533767556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Assignment_4$Assignment.coverage" NAME="Assignment Coverage Results" MODIFIED="1602583314957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
